@@ -10,11 +10,15 @@
     $query = "insert into produtos (nome, preco) values ('{$nome}', {$preco})";
 
     //Executa a query passando em qual conexão e qual query
-    mysqli_query($conexao, $query);
+    if(mysqli_query($conexao, $query)) { ?>
+        <p class="alert-sucess">O produto <?= $nome; ?>, <?= $preco; ?> adicionado com sucesso!</p>
+<?php   } else { ?>
+        <p class="alert-danger">O produto <?= $nome; ?> não foi adicionado.</p>
+<?php   }
 
     //Depois de executar fecha a conexão
     mysqli_close($conexao);
 ?>
 
-<p class="alert-sucess">Produto <?= $nome; ?>, <?= $preco; ?> adicionado com sucesso!</p>
+
 <?php include("rodape.php");?>
