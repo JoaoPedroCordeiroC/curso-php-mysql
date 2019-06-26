@@ -9,7 +9,7 @@ include("banco-produto.php");
     
     //Executa a query passando em qual conexão e qual query
     if(insereProduto($conexao, $nome, $preco)) { ?>
-        <p class="text-sucess">O produto <?= $nome; ?>, <?= $preco; ?> foi adicionado com sucesso!</p>
+        <p class="text-success">O produto <?= $nome; ?>, <?= $preco; ?> foi adicionado com sucesso!</p>
 <?php   } else { 
         $msg = mysqli_error($conexao);
 ?>
