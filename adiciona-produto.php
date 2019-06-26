@@ -1,6 +1,6 @@
-<?php include("cabecalho.php");?>
-<?php include("conecta.php");?>
-<?php include("banco-produto.php");
+<?php include("cabecalho.php");
+include("conecta.php");
+include("banco-produto.php");
     
 
     $nome = $_GET["nome"]; //$_GET pega o valor do parâmetro
