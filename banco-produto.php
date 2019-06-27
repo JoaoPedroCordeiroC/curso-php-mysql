@@ -9,6 +9,7 @@ function listaProdutos($conexao) {
         array_push($produtos, $produto);
 
     }
+    
     return $produtos;
 }
 
