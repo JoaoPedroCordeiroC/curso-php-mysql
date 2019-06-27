@@ -1,15 +1,14 @@
 <?php include("cabecalho.php");
  include("conecta.php");
- include("banco-produto.php"); ?>
-
-<?php
-    if (array_key_exists("removido", $_GET) && $_GET["removido"] == true) {
-?>
-        <p class="alert-success">Produto removido com sucesso!</p>
-<?php
-    }
-?>
-
+ include("banco-produto.php"); 
+ include("logica-usuario.php");
+ ?>
+ 
+<?php if(isset($_SESSION["success"])) { ?>
+    <p class="alert-success"><?= $_SESSION["success"]?></p>
+<?php 
+    unset($_SESSION["success"]);
+}?>
 
 <table class="table table-striped table-bordered">
 
