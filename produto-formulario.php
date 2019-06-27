@@ -6,7 +6,7 @@ $categorias = listaCategorias($conexao);
 ?>
     <h1>Formulario de produto</h1>
 <form action="adiciona-produto.php" method="post">
-    <table>
+    <table class="table">
         <tr>
             <td>Nome:</td> 
             <td><input class="form-control" type="text" name="nome"><br></td>
