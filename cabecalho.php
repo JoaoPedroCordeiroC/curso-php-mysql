@@ -26,7 +26,10 @@ include("mostra-alerta.php"); ?>
     </div>
 
     <div class="container">
-        <div class="principal">
 
-        <?php mostraAlerta("success"); ?>
-        <?php mostraAlerta("danger"); ?>
+    <div class="principal">
+
+        <?php 
+        mostraAlerta("success");
+        mostraAlerta("danger"); 
+        ?>
