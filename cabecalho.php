@@ -1,3 +1,4 @@
+<?php include("mostra-alerta.php"); ?>
 <html>
 <head>
     <title>Minha Loja</title>
@@ -24,3 +25,6 @@
 
     <div class="container">
         <div class="principal">
+
+        <?php mostraAlerta("success"); ?>
+        <?php mostraAlerta("danger"); ?>
