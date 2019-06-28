@@ -1,4 +1,6 @@
-<?php include("mostra-alerta.php"); ?>
+<?php 
+error_reporting(E_ALL ^ E_NOTICE);
+include("mostra-alerta.php"); ?>
 <html>
 <head>
     <title>Minha Loja</title>
