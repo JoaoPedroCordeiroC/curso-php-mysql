@@ -1,4 +1,6 @@
 <?php
+require_once("conecta.php");
+
 function listaProdutos($conexao) {
     $produtos = array();
     $resultado = mysqli_query($conexao, "select p.*, c.nome as categoria_nome 
@@ -16,7 +18,6 @@ function listaProdutos($conexao) {
 function insereProduto($conexao, $nome, $preco, $descricao, $categorias_id, $usado) {
     $query = "insert into produtos (nome, preco, descricao, categorias_id, usado) 
     values ('{$nome}', {$preco}, '{$descricao}', {$categorias_id}, {$usado})";
-    var_dump($query);
     return mysqli_query($conexao, $query);
 }
 function alteraProduto($conexao, $id, $nome, $preco, $descricao, $categorias_id, $usado) {

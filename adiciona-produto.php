@@ -1,7 +1,7 @@
-<?php include("cabecalho.php");
-include("conecta.php");
-include("banco-produto.php");
-include("logica-usuario.php");
+<?php 
+require_once("cabecalho.php");       //require_onde substitui o include e garante que  
+require_once("banco-produto.php");   //se esse arquivo já foi incluso não irá incluir 
+require_once("logica-usuario.php");  //novamente
 
 verificaUsuario();
 
