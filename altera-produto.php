@@ -6,19 +6,20 @@ require_once("class/Categoria.php");
 $categoria = new Categoria();
 $categoria->setId($_POST['categoria_id']);
 
-$produto = new Produto();
-$produto->setId($_POST["id"]);     //Lê o valor dos campos
-$produto->setNome($_POST["nome"]); //$_GET pega o valor do parâmetro
-$produto->setPreco($_POST["preco"]);
-$produto->setDescricao($_POST["descricao"]);
+
+
+$nome = $_POST["nome"]; //$_GET pega o valor do parâmetro
+$preco = $_POST["preco"];
+$descricao = $_POST["descricao"];
 
 if(array_key_exists('usado', $_POST)) {
-        $produto->setUsado("true");
+        $usado = "true";
 } else {
-        $produto->setUsado("false");
+        $usado = "false";
 }
 
-$produto->setCategoria($categoria);
+$produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
+$produto->setId($_POST["id"]);     //Lê o valor dos campos
 
 //Executa a query passando em qual conexão e qual query
 if(alteraProduto($conexao, $produto)) { ?>

@@ -4,27 +4,27 @@ require_once("banco-produto.php");   //se esse arquivo já foi incluso não irá
 require_once("logica-usuario.php");  //novamente
 require_once("class/Produto.php");
 require_once("class/Categoria.php");
+
 verificaUsuario();
 
+$nome = $_POST["nome"]; //$_GET pega o valor do parâmetro
+$preco = $_POST["preco"];
+$descricao = $_POST["descricao"];
 $categoria = new Categoria();
 $categoria->setId($_POST["categoria_id"]);
 
-$produto = new Produto();
-$produto->setNome($_POST["nome"]); //$_GET pega o valor do parâmetro
-$produto->setPreco($_POST["preco"]);
-$produto->setDescricao($_POST["descricao"]);
-$produto->setCategoria($categoria);
-
 if(array_key_exists('usado', $_POST)) {
-        $produto->setUsado("true");
+        $usado = "true";
 } else {
-	$produto->setUsado("false");
+	$usado = "false";
 }
+
+$produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
 
 //Executa a query passando em qual conexão e qual query
 if(insereProduto($conexao, $produto)) { ?>
         <p class="text-success">O produto <?= $produto->getNome(); ?>, 
-        <?= $produto->setPreco(); ?> foi adicionado com sucesso!</p>
+        <?= $produto->getPreco(); ?> foi adicionado com sucesso!</p>
 <?php } else { 
                 $msg = mysqli_error($conexao);
 ?>
