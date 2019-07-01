@@ -5,6 +5,6 @@
 $id = $_POST['id'];
 removeProduto($conexao, $id);
 $_SESSION['success'] = "Produto removido com sucesso!";
-header("Location: produto-lista.php"); //Encaminha para o caminho passado.
+header("Location: produto-lista.php"); //Encaminha para o caminho que foi passado.
 die();
 ?>
