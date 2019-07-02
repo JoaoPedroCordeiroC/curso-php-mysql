@@ -4,11 +4,14 @@ require_once("logica-usuario.php");  //se esse arquivo já foi incluso não irá
                                         //incluir novamente
 verificaUsuario();
 
-$nome = $_POST["nome"]; //$_GET pega o valor do parâmetro
-$preco = $_POST["preco"];
-$descricao = $_POST["descricao"];
 $categoria = new Categoria();
 $categoria->setId($_POST["categoria_id"]);
+
+$nome = $_POST["nome"]; //$_GET/POST pega o valor do parâmetro
+$preco = $_POST["preco"];
+$descricao = $_POST["descricao"];
+$isbn = $_POST['isbn'];
+$tipoProduto = $_POST['tipoProduto'];
 
 if(array_key_exists('usado', $_POST)) {
         $usado = "true";
@@ -17,6 +20,8 @@ if(array_key_exists('usado', $_POST)) {
 }
 
 $produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
+$produto->setIsbn($isbn);
+$produto->setTipoProduto($tipoProduto);
 
 $produtoDao = new ProdutoDao($conexao);
 

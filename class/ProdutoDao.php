@@ -24,10 +24,14 @@ class ProdutoDao {
             $preco = $produto_array['preco'];
             $descricao = $produto_array['descricao'];
             $usado = $produto_array['usado'];
-    
+            $isbn = $produto_array['isbn'];
+            $tipoProduto = $produto_array['tipoProduto'];
+
             $produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
             $produto->setId($produto_array['id']);
-    
+            $produto->setIsbn($isbn);
+            $produto->setTipoProduto($tipoProduto);
+
             array_push($produtos, $produto);
         }
         
@@ -36,10 +40,11 @@ class ProdutoDao {
     
     function insereProduto(Produto $produto) {
     
-        $query = "insert into produtos (nome, preco, descricao, categorias_id, usado) 
-            values ('{$produto->getNome()}', {$produto->getPreco()}, 
-            '{$produto->getDescricao()}', {$produto->getCategoria()->getId()}, 
-            {$produto->getUsado()})";
+        $query = "insert into produtos (nome, preco, descricao, categorias_id, 
+            usado, isbn, tipoProduto) values ('{$produto->getNome()}', 
+            {$produto->getPreco()}, '{$produto->getDescricao()}', 
+            {$produto->getCategoria()->getId()}, {$produto->getUsado()}, 
+            '{$produto->getIsbn()}', '{$produto->getTipoProduto()}')";
     
         return mysqli_query($this->conexao, $query);
     }

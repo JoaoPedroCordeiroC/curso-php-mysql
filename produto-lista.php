@@ -13,6 +13,7 @@
         <td><?= $produto->precoComDesconto(0.1) ?></td>
         <td><?= substr($produto->getDescricao(), 0, 30) ?></td>
         <td><?= $produto->getCategoria()->getNome() ?></td>
+        <td>ISBN: <?= $produto->getIsbn() ?></td>
         <td>
             <a class="btn btn-primary" 
             href="produto-altera-formulario.php?id=<?=$produto->getId()?>">alterar

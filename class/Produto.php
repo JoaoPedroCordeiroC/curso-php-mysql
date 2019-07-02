@@ -8,6 +8,8 @@ class Produto {
     private $descricao;
     private $categoria;  //categoria é outro objeto
     private $usado;
+    private $isbn;
+    private $tipoProduto;
 
     function __construct($nome, $preco, $descricao, Categoria $categoria, $usado) {
         $this->nome = $nome;
@@ -49,6 +51,22 @@ class Produto {
         $this->usado = $usado;
     }
 
+    public function getIsbn() {
+        return $this->isbn;
+    }
+
+    public function setIsbn($isbn) {
+        $this->isbn = $isbn;
+    }
+
+    public function getTipoProduto() {
+        return $this->tipoProduto; 
+    }
+
+    public function setTipoProduto($tipoProduto) {
+        $this->tipoProduto = $tipoProduto;
+    }
+    
     public function precoComDesconto($valor) {
         if ($valor > 0 && $valor <= 0.5) {
             $this->preco -= $this->preco * $valor;
