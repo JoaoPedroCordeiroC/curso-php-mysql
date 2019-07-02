@@ -1,10 +1,7 @@
 <?php 
-require_once("cabecalho.php");       //require_onde substitui o include e garante que  
-require_once("banco-produto.php");   //se esse arquivo já foi incluso não irá incluir 
-require_once("logica-usuario.php");  //novamente
-require_once("class/Produto.php");
-require_once("class/Categoria.php");
-
+require_once("cabecalho.php");       //require_once substitui o include e garante que  
+require_once("logica-usuario.php");  //se esse arquivo já foi incluso não irá 
+                                        //incluir novamente
 verificaUsuario();
 
 $nome = $_POST["nome"]; //$_GET pega o valor do parâmetro
@@ -21,8 +18,10 @@ if(array_key_exists('usado', $_POST)) {
 
 $produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
 
+$produtoDao = new ProdutoDao($conexao);
+
 //Executa a query passando em qual conexão e qual query
-if(insereProduto($conexao, $produto)) { ?>
+if($produtoDao->insereProduto($produto)) { ?>
         <p class="text-success">O produto <?= $produto->getNome(); ?>, 
         <?= $produto->getPreco(); ?> foi adicionado com sucesso!</p>
 <?php } else { 
