@@ -1,6 +1,4 @@
 <?php require_once("cabecalho.php");
-require_once("class/Produto.php");
-require_once("class/Categoria.php");
     
 $categoria = new Categoria();
 $categoria->setId($_POST['categoria_id']);
@@ -8,6 +6,8 @@ $categoria->setId($_POST['categoria_id']);
 $nome = $_POST["nome"]; //$_GET pega o valor do parâmetro
 $preco = $_POST["preco"];
 $descricao = $_POST["descricao"];
+$isbn = $_POST['isbn'];
+$tipoProduto = $_POST['tipoProduto'];
 
 if(array_key_exists('usado', $_POST)) {
         $usado = "true";
@@ -15,7 +15,13 @@ if(array_key_exists('usado', $_POST)) {
         $usado = "false";
 }
 
-$produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
+if ($tipoProduto == "Livro") {
+        $produto = new Livro($nome, $preco, $descricao, $categoria, $usado);
+        $produto->setIsbn($isbn);
+} else {
+        $produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
+}
+
 $produto->setId($_POST["id"]);     //Lê o valor dos campos
 
 $produtoDao = new ProdutoDao($conexao);

@@ -8,8 +8,6 @@ class Produto {
     private $descricao;
     private $categoria;  //categoria é outro objeto
     private $usado;
-    private $isbn;
-    private $tipoProduto;
 
     function __construct($nome, $preco, $descricao, Categoria $categoria, $usado) {
         $this->nome = $nome;
@@ -50,22 +48,6 @@ class Produto {
     public function setUsado($usado) {
         $this->usado = $usado;
     }
-
-    public function getIsbn() {
-        return $this->isbn;
-    }
-
-    public function setIsbn($isbn) {
-        $this->isbn = $isbn;
-    }
-
-    public function getTipoProduto() {
-        return $this->tipoProduto; 
-    }
-
-    public function setTipoProduto($tipoProduto) {
-        $this->tipoProduto = $tipoProduto;
-    }
     
     public function precoComDesconto($valor) {
         if ($valor > 0 && $valor <= 0.5) {
@@ -73,6 +55,10 @@ class Produto {
         } 
         return $this->preco;
     }
+
+    public function temIsbn() {
+        return $this instanceof Livro; //Se for uma instancia de livro
+    }                                  //vai retornar true
 
     function __toString() {
         return $this->nome.": R$ ".$this->preco;
