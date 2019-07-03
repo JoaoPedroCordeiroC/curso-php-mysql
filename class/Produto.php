@@ -1,6 +1,6 @@
 <?php 
 
-class Produto {
+abstract class Produto {
 
     private $id;
     private $nome;
@@ -68,17 +68,11 @@ class Produto {
         return $this instanceof Ebook;
     }
 
-    public function atualizaBaseadoEm($params) {
-        if ($this->temIsbn()) {
-            $this->setIsbn($params['isbn']);
-        }
-        if ($this->temTaxaImpressao()) {
-            $this->setTaxaImpressao($params['taxaImpressao']);
-        }
-        if ($this->temWaterMark()) {
-            $this->setWaterMark($params['waterMark']);
-        }
-    }
+    //Quando um método é abstrato, obrigatóriamente as filhas (todas as classes 
+    //que estendem a classe que possui o método abstrato tem que implementar este
+    //método) e quando a classe possui um método abstrato, obrigatóriamente 
+    //ela tem que se tornar abstrata.
+    abstract function atualizaBaseadoEm($params);
 
     public function calculaImposto() {
             return $this->preco * 0.195;
