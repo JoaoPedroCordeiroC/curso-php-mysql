@@ -4,13 +4,13 @@
 
     <?php
         $produtoDao = new ProdutoDao($conexao);
-        $produtos = $produtoDao->listaProdutos($conexao);
+        $produtos = $produtoDao->listaProdutos();
         foreach($produtos as $produto) :
     ?>
     <tr>
         <td><?= $produto->getNome() ?></td>
         <td><?= $produto->getPreco() ?></td>
-        <td><?= $produto->precoComDesconto(0.1) ?></td>
+        <td><?= $produto->calculaImposto() ?></td>
         <td><?= substr($produto->getDescricao(), 0, 30) ?></td>
         <td><?= $produto->getCategoria()->getNome() ?></td>
         <td>
